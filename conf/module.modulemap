@@ -1,0 +1,11 @@
+//
+//  module.modulemap
+//  aubrey
+//
+//  Created by samara on 8/29/23.
+//
+
+module BotConfig {
+    header "botconfig.h"
+    export *
+}

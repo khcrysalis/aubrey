@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "discord.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Defxult/Discord.swift",
+      "state" : {
+        "branch" : "main",
+        "revision" : "8ea21b69518dede1b756e61c657fa0414d262afa"
+      }
+    }
+  ],
+  "version" : 2
+}

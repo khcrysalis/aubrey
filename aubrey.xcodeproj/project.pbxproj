@@ -3,11 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		333C9B0B2A9EA1AE0088355B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333C9B0A2A9EA1AE0088355B /* main.swift */; };
+		333C9B0B2A9EA1AE0088355B /* Aubrey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333C9B0A2A9EA1AE0088355B /* Aubrey.swift */; };
+		333C9B132A9EA1D60088355B /* Discord in Frameworks */ = {isa = PBXBuildFile; productRef = 333C9B122A9EA1D60088355B /* Discord */; settings = {ATTRIBUTES = (Required, ); }; };
+		333C9B1C2A9EDE440088355B /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333C9B1B2A9EDE440088355B /* Variables.swift */; };
+		3348280C2AF9DF6A00104956 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348280B2AF9DF6A00104956 /* Logging.swift */; };
+		3393D55B2A9EECD90058EBAA /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3393D55A2A9EECD90058EBAA /* Listener.swift */; };
+		33D039132A9EFD7E00CF0C29 /* Slash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D039122A9EFD7E00CF0C29 /* Slash.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +29,13 @@
 
 /* Begin PBXFileReference section */
 		333C9B072A9EA1AE0088355B /* aubrey */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = aubrey; sourceTree = BUILT_PRODUCTS_DIR; };
-		333C9B0A2A9EA1AE0088355B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		333C9B0A2A9EA1AE0088355B /* Aubrey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aubrey.swift; sourceTree = "<group>"; };
+		333C9B162A9EA4FA0088355B /* botconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = botconfig.h; sourceTree = "<group>"; };
+		333C9B172A9EA6790088355B /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		333C9B1B2A9EDE440088355B /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
+		3348280B2AF9DF6A00104956 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		3393D55A2A9EECD90058EBAA /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
+		33D039122A9EFD7E00CF0C29 /* Slash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333C9B132A9EA1D60088355B /* Discord in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +53,7 @@
 		333C9AFE2A9EA1AE0088355B = {
 			isa = PBXGroup;
 			children = (
+				333C9B1A2A9EA9AA0088355B /* conf */,
 				333C9B092A9EA1AE0088355B /* aubrey */,
 				333C9B082A9EA1AE0088355B /* Products */,
 			);
@@ -57,9 +70,30 @@
 		333C9B092A9EA1AE0088355B /* aubrey */ = {
 			isa = PBXGroup;
 			children = (
-				333C9B0A2A9EA1AE0088355B /* main.swift */,
+				333C9B0A2A9EA1AE0088355B /* Aubrey.swift */,
+				3348280B2AF9DF6A00104956 /* Logging.swift */,
+				333C9B1B2A9EDE440088355B /* Variables.swift */,
+				33D039112A9EFD6600CF0C29 /* Commands */,
 			);
 			path = aubrey;
+			sourceTree = "<group>";
+		};
+		333C9B1A2A9EA9AA0088355B /* conf */ = {
+			isa = PBXGroup;
+			children = (
+				333C9B162A9EA4FA0088355B /* botconfig.h */,
+				333C9B172A9EA6790088355B /* module.modulemap */,
+			);
+			path = conf;
+			sourceTree = "<group>";
+		};
+		33D039112A9EFD6600CF0C29 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				3393D55A2A9EECD90058EBAA /* Listener.swift */,
+				33D039122A9EFD7E00CF0C29 /* Slash.swift */,
+			);
+			path = Commands;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -78,6 +112,9 @@
 			dependencies = (
 			);
 			name = aubrey;
+			packageProductDependencies = (
+				333C9B122A9EA1D60088355B /* Discord */,
+			);
 			productName = aubrey;
 			productReference = 333C9B072A9EA1AE0088355B /* aubrey */;
 			productType = "com.apple.product-type.tool";
@@ -98,7 +135,7 @@
 				};
 			};
 			buildConfigurationList = 333C9B022A9EA1AE0088355B /* Build configuration list for PBXProject "aubrey" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -106,6 +143,9 @@
 				Base,
 			);
 			mainGroup = 333C9AFE2A9EA1AE0088355B;
+			packageReferences = (
+				333C9B112A9EA1D60088355B /* XCRemoteSwiftPackageReference "Discord" */,
+			);
 			productRefGroup = 333C9B082A9EA1AE0088355B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -120,7 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				333C9B0B2A9EA1AE0088355B /* main.swift in Sources */,
+				333C9B0B2A9EA1AE0088355B /* Aubrey.swift in Sources */,
+				3348280C2AF9DF6A00104956 /* Logging.swift in Sources */,
+				33D039132A9EFD7E00CF0C29 /* Slash.swift in Sources */,
+				3393D55B2A9EECD90058EBAA /* Listener.swift in Sources */,
+				333C9B1C2A9EDE440088355B /* Variables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,8 +293,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/conf";
 				SWIFT_VERSION = 5.0;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -259,7 +306,9 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/conf";
 				SWIFT_VERSION = 5.0;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
@@ -285,6 +334,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		333C9B112A9EA1D60088355B /* XCRemoteSwiftPackageReference "Discord" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Defxult/Discord.swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		333C9B122A9EA1D60088355B /* Discord */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 333C9B112A9EA1D60088355B /* XCRemoteSwiftPackageReference "Discord" */;
+			productName = Discord;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 333C9AFF2A9EA1AE0088355B /* Project object */;
 }
