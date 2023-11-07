@@ -22,7 +22,21 @@ class MyListener: EventListener {
         guard !message.author.isBot else {
             return
         }
-        
+        //if message.author.id == owner {
+            let randomNumber = Int.random(in: 1...100)
+            if randomNumber == 1 {
+                
+                do {
+                    try await message.channel.send("meow"
+                                                   //, reference: message.asReference
+                    )
+                } catch {
+                    logger.error("Failed to send message: \(error, privacy: .public)")
+                }
+            }
+        //}
+
+
         switch message.content {
             
         case "[ping]":

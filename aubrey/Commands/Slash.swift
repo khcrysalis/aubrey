@@ -51,7 +51,6 @@ extension Aubrey {
             guildId: nil,
             onInteraction: { interaction async in
                 let data = interaction.data as! ApplicationCommandData
-                var files: [File] = []
                 let channel = interaction.channel as? TextChannel
                 var message: String?
 
@@ -61,10 +60,17 @@ extension Aubrey {
                     }
                 }
 
-                if let attachmentOption = data.options?.first(where: { $0.name == "attachment" }) {
-                    if let attachment = attachmentOption.value as? File {
-                        if attachment.data.count <= 8_000_000 {
-                            files.append(attachment)
+                if let attachment = data.results.attachments.first {
+                    if let file = try? await attachment.download() {
+                        if attachment.size <= 8_000_000 {
+                            do {
+                                let doneEmbed = Embed(title: "Done!", description: "Message sent successfully", color: .green)
+                                try await interaction.respondWithMessage(embeds: [doneEmbed], ephemeral: true)
+                                try await channel?.send(message, files: [file])
+                            } catch {
+                                logger.error("Error sending message: \(error)")
+                            }
+                            return
                         } else {
                             let errorMessage = "Attachment size exceeds the 8 MB limit."
                             let errorEmbed = Embed(title: "Error", description: errorMessage, color: .red)
@@ -77,7 +83,7 @@ extension Aubrey {
                 do {
                     let doneEmbed = Embed(title: "Done!", description: "Message sent successfully", color: .green)
                     try await interaction.respondWithMessage(embeds: [doneEmbed], ephemeral: true)
-                    try await channel?.send(message, files: files)
+                    try await channel?.send(message)
                 } catch {
                     logger.error("Error sending message: \(error)")
                 }
