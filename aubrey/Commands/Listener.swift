@@ -23,18 +23,18 @@ class MyListener: EventListener {
             return
         }
         //if message.author.id == owner {
-            let randomNumber = Int.random(in: 1...100)
-            if randomNumber == 1 {
-                
-                do {
-                    try await message.channel.send("meow"
-                                                   //, reference: message.asReference
-                    )
-                } catch {
-                    logger.error("Failed to send message: \(error, privacy: .public)")
-                }
-            }
-        //}
+//            let randomNumber = Int.random(in: 1...100)
+//            if randomNumber == 1 {
+//                
+//                do {
+//                    try await message.channel.send("meow"
+//                                                   //, reference: message.asReference
+//                    )
+//                } catch {
+//                    logger.error("Failed to send message: \(error, privacy: .public)")
+//                }
+//            }
+//        //}
 
 
         switch message.content {
@@ -62,6 +62,29 @@ class MyListener: EventListener {
             } catch {
                 logger.error("W>>>>e: \(error, privacy: .public)")
             }
+        case "[help]":
+            do {
+                try await message.channel.send("""
+                                               ```
+                                               Things that the bot listens to:
+                                               [meow]                           Meow
+                                               [ping]                           Pong!
+                                               [help]                           Sends this message
+                                               [sync]                           Syncs slash commands (discord.swift sucks sometims) [needs bot owner]
+                                               [disconnect]                     Disconnects the bot from discord [needs bot owner]
+                                               [test]                           For testing [needs bot owner]
+                                               
+                                               
+                                               Slash commands:
+                                               /say <message> <attachments>     Sends message through the bot including attachments if any
+                                               /compliment <mention>            Sends a compliment either to you or an oomfie you mentioned
+                                               /me                              You
+                                               ```
+                                               """
+                )
+            } catch {
+                logger.error("W>>>>e: \(error, privacy: .public)")
+            }
         case "[sync]":
             if message.author.id == owner {
                 do {
@@ -85,9 +108,19 @@ class MyListener: EventListener {
                 bot.disconnect()
                 exit(0)
             }
-            
+        case "[test]":
+            if message.author.id == owner {
+//                do {
+//                    try await bot.http.deleteApplicationCommand(botId: 1109206230775378030, commandId: 1146303923838271538, guildId: nil)
+//                } catch {
+//                    logger.error("Failed to del: \(error, privacy: .public)")
+//                }
+                exit(0)
+            }
+
         default:
             break
         }
     }
 }
+

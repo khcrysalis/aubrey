@@ -11,6 +11,8 @@
 		333C9B132A9EA1D60088355B /* Discord in Frameworks */ = {isa = PBXBuildFile; productRef = 333C9B122A9EA1D60088355B /* Discord */; settings = {ATTRIBUTES = (Required, ); }; };
 		333C9B1C2A9EDE440088355B /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333C9B1B2A9EDE440088355B /* Variables.swift */; };
 		3348280C2AF9DF6A00104956 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348280B2AF9DF6A00104956 /* Logging.swift */; };
+		3348280E2AFB4BB100104956 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348280D2AFB4BB100104956 /* Buttons.swift */; };
+		334828102AFB627400104956 /* utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3348280F2AFB627400104956 /* utils.swift */; };
 		3393D55B2A9EECD90058EBAA /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3393D55A2A9EECD90058EBAA /* Listener.swift */; };
 		33D039132A9EFD7E00CF0C29 /* Slash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D039122A9EFD7E00CF0C29 /* Slash.swift */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,8 @@
 		333C9B172A9EA6790088355B /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		333C9B1B2A9EDE440088355B /* Variables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
 		3348280B2AF9DF6A00104956 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		3348280D2AFB4BB100104956 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		3348280F2AFB627400104956 /* utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = utils.swift; sourceTree = "<group>"; };
 		3393D55A2A9EECD90058EBAA /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		33D039122A9EFD7E00CF0C29 /* Slash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slash.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,6 +78,7 @@
 				3348280B2AF9DF6A00104956 /* Logging.swift */,
 				333C9B1B2A9EDE440088355B /* Variables.swift */,
 				33D039112A9EFD6600CF0C29 /* Commands */,
+				3348280F2AFB627400104956 /* utils.swift */,
 			);
 			path = aubrey;
 			sourceTree = "<group>";
@@ -92,6 +97,7 @@
 			children = (
 				3393D55A2A9EECD90058EBAA /* Listener.swift */,
 				33D039122A9EFD7E00CF0C29 /* Slash.swift */,
+				3348280D2AFB4BB100104956 /* Buttons.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
@@ -161,8 +167,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				333C9B0B2A9EA1AE0088355B /* Aubrey.swift in Sources */,
+				334828102AFB627400104956 /* utils.swift in Sources */,
 				3348280C2AF9DF6A00104956 /* Logging.swift in Sources */,
 				33D039132A9EFD7E00CF0C29 /* Slash.swift in Sources */,
+				3348280E2AFB4BB100104956 /* Buttons.swift in Sources */,
 				3393D55B2A9EECD90058EBAA /* Listener.swift in Sources */,
 				333C9B1C2A9EDE440088355B /* Variables.swift in Sources */,
 			);
