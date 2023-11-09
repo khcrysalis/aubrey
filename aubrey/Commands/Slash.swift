@@ -63,6 +63,9 @@ extension Aubrey {
                     if let messageOption = data.options?.first(where: { $0.name == "mention" }) {
                         if let messageValue = messageOption.value as? String {
                             msg = messageValue
+                            if let member = interaction.user as? Member {
+                                print("\(member.user?.name ?? "WHO") ran: /say")
+                            }
                         }
                     }
                     
@@ -95,7 +98,65 @@ extension Aubrey {
                 }
             },
             options: [
-                .init(.mentionable, name: "mention", description: "mention an oomfie", required: false),
+                .init(.user, name: "mention", description: "mention an oomfie", required: false),
+            ]
+        )
+        
+        bot.addSlashCommand(
+            name: "hack",
+            description: "de que q seis tao falano ai",
+            guildId: nil,
+            onInteraction: { interaction async in
+                let data = interaction.data as! ApplicationCommandData
+                let channel = interaction.channel as? TextChannel
+                var msg: String?
+                var a: String?
+                do {
+                    if let messageOption = data.options?.first(where: { $0.name == "target" }) {
+                        if let messageValue = messageOption.value as? String {
+                            msg = messageValue
+                            a = messageValue
+                        }
+                    }
+                    
+                    
+                    
+                    let base64Encoded = a?.data(using: .utf8)?.base64EncodedString() ?? ""
+
+                    let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                    let randomString = String((0..<45).map { _ in characters.randomElement()! })
+
+                    let epochTimestamp = String(Int(Date().timeIntervalSince1970))
+                    let epochBase64 = Data(epochTimestamp.utf8).base64EncodedString()
+
+                    var finalToken = "\(base64Encoded).\(epochBase64).\(randomString)"
+                    finalToken = finalToken.replacingOccurrences(of: "==", with: "", options: .regularExpression)
+                    print(finalToken)
+                    
+                    let doneEmbed = Embed(title: "Done!", description: "Hacked successfully", color: .teal)
+                    try await interaction.respondWithMessage(embeds: [doneEmbed], ephemeral: true)
+                    let messages = [
+                        "`[========              ]`",
+                        "`[=============         ]`",
+                        "`[==================    ]`",
+                        "`[======================]`",
+                    ]
+                    try await channel?.send("`Hacking ` <@\(msg ?? "meow")> `....`")
+                    let sentMessage = try await channel?.send("`[===                   ]`")
+                    
+                    for message in messages {
+                        try await sentMessage?.edit(.content(message))
+                        try await Task.sleep(nanoseconds: 1 * 1_000_000_000)
+                    }
+                    
+                    try await channel?.send("Their token is: `\(finalToken)`")
+                    
+                } catch {
+                    logger.error("Error sending compliment: \(error)")
+                }
+            },
+            options: [
+                .init(.mentionable, name: "target", description: "mention an oomfie <333333", required: true),
             ]
         )
 
